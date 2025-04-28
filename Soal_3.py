@@ -1,14 +1,22 @@
 #Soal 3
-class persegi:
-  def __init__(self, sisi):
-    self.sisi = int(sisi)
+class Buku:
+  def cover(self):
+    pass
+class Novel(Buku):
+  def cover(self):
+    return "Novel memiliki Soft Cover"
+class Ensiklopedia(Buku):
+  def cover(self):
+    return "Ensiklopedia memiliki Hard Cover"
+class Factory:
+  @staticmethod
+  def buat_buku(jenis_buku):
+    if jenis_buku == "Novel":
+      return Novel()
+    elif jenis_buku == "Ensiklopedia":
+      return Ensiklopedia()
+    else:
+      raise ValueError("Jenis buku ini belum ada")
 
-  def luas(self):
-    return (self.sisi**2)
-
-  def keliling(self):
-    return (self.sisi*4)
-
-n = int(input("Masukkan sisi Persegi: "))
-print("Luas Persegi:", persegi(n).luas())
-print("Keliling Persegi:", persegi(n).keliling())
+Twilight = Factory.buat_buku("Novel")
+print(Twilight.cover())
